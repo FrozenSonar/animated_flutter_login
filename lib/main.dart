@@ -1,32 +1,45 @@
-// main.dart
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'blocs/blocs.dart';
+import 'services/services.dart';
+import 'pages/pages.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+        // Injects the Authentication service
+        RepositoryProvider<AuthenticationService>(
+      create: (context) {
+        return FakeAuthenticationService();
+      },
+      // Injects the Authentication BLoC
+      child: BlocProvider<AuthenticationBloc>(
+        create: (context) {
+          final authService = RepositoryProvider.of<AuthenticationService>(context);
+          return AuthenticationBloc(authService)..add(AppLoaded());
+        },
+        child: MyApp(),
+      ),
+    ));
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Demo',
+      title: 'Authentication Demo',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        accentColor: Colors.orange,
-        cursorColor: Colors.orange,
-        textTheme: TextTheme(
-          display2: TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 45.0,
-            color: Colors.orange,
-          ),
-          button: TextStyle(
-            fontFamily: 'OpenSans',
-          ),
-          subhead: TextStyle(fontFamily: 'NotoSans'),
-          body1: TextStyle(fontFamily: 'NotoSans'),
-        ),
+        primarySwatch: Colors.teal,
       ),
-      home: LoginScreen(),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationAuthenticated) {
+            // show home page
+            return HomePage(
+              user: state.user,
+            );
+          }
+          // otherwise show login page
+          return LoginPage();
+        },
+      ),
     );
   }
 }
