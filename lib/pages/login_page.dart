@@ -93,7 +93,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
       _controller.forward().then((value) => _controller.reverse());
       //_controller.reverse();
     });
-
+    _passwordController.addListener(() {
+      _controller.forward().then((value) => _controller.reverse());
+      //_controller.reverse();
+    });
       /*
         var start = 0.4;
         var stop = 0.6;
