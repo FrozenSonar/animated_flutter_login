@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_authentication/blocs/authentication/authentication.dart';
 import '../models/models.dart';
-
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 class HomePage extends StatelessWidget {
   final User user;
 
@@ -10,6 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final player = AudioCache();
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
     return Scaffold(
       appBar: AppBar(
@@ -33,6 +35,7 @@ class HomePage extends StatelessWidget {
                 textColor: Theme.of(context).primaryColor,
                 child: Text('Logout'),
                 onPressed: (){
+                  player.play('DD2.wav');
                   authBloc.add(UserLoggedOut());
                 },
               )

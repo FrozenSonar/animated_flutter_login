@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/blocs.dart';
 import '../services/services.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 class LoginPage extends StatelessWidget {
   @override
+  final player = AudioCache();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -31,6 +33,7 @@ class LoginPage extends StatelessWidget {
                       child: Text('Retry'),
                       onPressed: () {
                         authBloc.add(AppLoaded());
+
                       },
                     )
                   ],
@@ -120,6 +123,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
   //=====================================
 
   @override
+  final player = AudioCache();
   Widget build(BuildContext context) {
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
@@ -145,10 +149,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
             return Center(
               child: CircularProgressIndicator(),
             );
+
           }
           return Form(
             key: _key,
-
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -156,7 +160,6 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                   Lottie.network(
                     'https://assets1.lottiefiles.com/private_files/lf30_UsJGRD.json',
                     controller: _controller,
-
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -201,7 +204,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     padding: const EdgeInsets.all(16),
                     shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
                     child: Text('LOG IN'),
-                    onPressed: state is LoginLoading ? () {} : _onLoginButtonPressed,
+                    onPressed: state is LoginLoading ? () { } : _onLoginButtonPressed,
                   )
                 ],
               ),

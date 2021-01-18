@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/blocs.dart';
 import 'services/services.dart';
 import 'pages/pages.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() => runApp(
         // Injects the Authentication service
@@ -22,6 +24,7 @@ void main() => runApp(
 
 class MyApp extends StatelessWidget {
   @override
+  final player = AudioCache();
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Authentication Demo',
@@ -32,6 +35,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
             // show home page
+            player.play('DC1.wav');
             return HomePage(
               user: state.user,
             );
