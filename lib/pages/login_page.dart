@@ -84,6 +84,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
 
 
   @override
+  final player = AudioCache();
   void initState() {
     super.initState();
 
@@ -91,13 +92,15 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
         vsync: this,
         lowerBound: 0.40,
         upperBound: 0.50,
-        duration: Duration(milliseconds: 20) );
+        duration: Duration(milliseconds: 30) );
     _emailController.addListener(() {
       _controller.forward().then((value) => _controller.reverse());
+      player.play('KB1.wav');
       //_controller.reverse();
     });
     _passwordController.addListener(() {
       _controller.forward().then((value) => _controller.reverse());
+      player.play('KB1.wav');
       //_controller.reverse();
     });
       /*
@@ -123,7 +126,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
   //=====================================
 
   @override
-  final player = AudioCache();
+
   Widget build(BuildContext context) {
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
@@ -167,6 +170,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       filled: true,
                       isDense: true,
                     ),
+
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
@@ -174,6 +178,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       if (value == null) {
                         return 'Email is required.';
                       }
+
                       return null;
                     },
                   ),
@@ -192,6 +197,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       if (value == null) {
                         return 'Password is required.';
                       }
+
                       return null;
                     },
                   ),

@@ -32,6 +32,8 @@ flutter:
  - assets/DD2.wav
  - assets/DC1.wav
  - assets/AD.wav
+ - assets/KB2.wav
+ - assets/KB1.wav
 
  
 uses-material-design: true
