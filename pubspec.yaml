@@ -11,7 +11,7 @@ dependencies:
   flutter_bloc: ^6.0.6
   equatable: ^1.0.2
   lottie: ^0.7.0+1
-
+  audioplayers: ^0.10.0
   flutter:
     sdk: flutter
 
@@ -27,10 +27,16 @@ dev_dependencies:
 
 flutter:
 
+ assets:
+ - assets/note1.wav
+ - assets/DD2.wav
+ - assets/DC1.wav
+ - assets/AD.wav
+ - assets/KB2.wav
+ - assets/KB1.wav
+
  
- 
- 
-  uses-material-design: true
+uses-material-design: true
 
  
  

@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/blocs.dart';
 import '../services/services.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 class LoginPage extends StatelessWidget {
   @override
+  final player = AudioCache();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -31,6 +33,7 @@ class LoginPage extends StatelessWidget {
                       child: Text('Retry'),
                       onPressed: () {
                         authBloc.add(AppLoaded());
+
                       },
                     )
                   ],
@@ -81,6 +84,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
 
 
   @override
+  final player = AudioCache();
   void initState() {
     super.initState();
 
@@ -88,12 +92,17 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
         vsync: this,
         lowerBound: 0.40,
         upperBound: 0.50,
-        duration: Duration(milliseconds: 20) );
+        duration: Duration(milliseconds: 30) );
     _emailController.addListener(() {
       _controller.forward().then((value) => _controller.reverse());
+      player.play('KB1.wav');
       //_controller.reverse();
     });
-
+    _passwordController.addListener(() {
+      _controller.forward().then((value) => _controller.reverse());
+      player.play('KB1.wav');
+      //_controller.reverse();
+    });
       /*
         var start = 0.4;
         var stop = 0.6;
@@ -117,6 +126,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
   //=====================================
 
   @override
+
   Widget build(BuildContext context) {
     final _loginBloc = BlocProvider.of<LoginBloc>(context);
 
@@ -142,10 +152,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
             return Center(
               child: CircularProgressIndicator(),
             );
+
           }
           return Form(
             key: _key,
-
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -153,7 +163,6 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                   Lottie.network(
                     'https://assets1.lottiefiles.com/private_files/lf30_UsJGRD.json',
                     controller: _controller,
-
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -161,6 +170,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       filled: true,
                       isDense: true,
                     ),
+
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
@@ -168,6 +178,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       if (value == null) {
                         return 'Email is required.';
                       }
+
                       return null;
                     },
                   ),
@@ -186,6 +197,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       if (value == null) {
                         return 'Password is required.';
                       }
+
                       return null;
                     },
                   ),
@@ -198,7 +210,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     padding: const EdgeInsets.all(16),
                     shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
                     child: Text('LOG IN'),
-                    onPressed: state is LoginLoading ? () {} : _onLoginButtonPressed,
+                    onPressed: state is LoginLoading ? () { } : _onLoginButtonPressed,
                   )
                 ],
               ),
