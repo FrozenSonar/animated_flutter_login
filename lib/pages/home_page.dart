@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_authentication/blocs/authentication/authentication.dart';
 import '../models/models.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
 class HomePage extends StatelessWidget {
   final User user;

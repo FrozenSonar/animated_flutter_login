@@ -1,5 +1,5 @@
 name: flutter_bloc_authentication
-description: A simple Flutter project that showcases how to use the BLoC pattern for authentication.
+description: A simple Flutter project that showcases how to use the BLoC pattern for authentication with Sound and Interactive UI Login.
 
 version: 1.0.0+1
 
@@ -26,7 +26,7 @@ dev_dependencies:
 
 
 flutter:
-
+#this is the assets list and needed for the a in the code
  assets:
  - assets/note1.wav
  - assets/DD2.wav
