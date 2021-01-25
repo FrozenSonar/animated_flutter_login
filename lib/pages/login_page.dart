@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/blocs.dart';
 import '../services/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
+
 class LoginPage extends StatelessWidget {
   @override
-  final player = AudioCache();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +32,6 @@ class LoginPage extends StatelessWidget {
                       child: Text('Retry'),
                       onPressed: () {
                         authBloc.add(AppLoaded());
-
                       },
                     )
                   ],
@@ -89,6 +87,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
     super.initState();
 
     _controller = AnimationController(
+      /*
+       This code is when the user types in the Email and password text fields
+       the animation and sound goes along with it
+       */
         vsync: this,
         lowerBound: 0.40,
         upperBound: 0.50,
@@ -103,16 +105,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
       player.play('KB1.wav');
       //_controller.reverse();
     });
-      /*
-        var start = 0.4;
-        var stop = 0.6;
-        _controller.repeat(
-          min: start,
-          max: stop,
-          reverse: true,
-          period: _controller.duration * (stop - start),
-        );
-*/
+
   }
 
   @override
@@ -171,14 +164,13 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       isDense: true,
                     ),
 
-                    controller: _emailController,
+                    controller: _emailController, //This connects to the animation as the controller
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     validator: (value) {
                       if (value == null) {
                         return 'Email is required.';
                       }
-
                       return null;
                     },
                   ),
@@ -192,12 +184,11 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                       isDense: true,
                     ),
                     obscureText: true,
-                    controller: _passwordController,
+                    controller: _passwordController, //This connects to the animation as the controller
                     validator: (value) {
                       if (value == null) {
                         return 'Password is required.';
                       }
-
                       return null;
                     },
                   ),
