@@ -4,6 +4,11 @@ Abesamis B. , Diosaban T. , and Magallanes A. of BSCS-3A
 
 Please turn on your sound to hear the sound effects. 
 
+
+Preview of the UI:
+
+
+
 We used the following plugin/s and widget/s for our application:
  - flutter_bloc and _bloc (for the login authentication)
  - audioplayers (for the sound effects)
