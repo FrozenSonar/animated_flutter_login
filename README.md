@@ -7,6 +7,8 @@ Please turn on your sound to hear the sound effects.
 
 Preview of the UI:
 
+![UI](https://user-images.githubusercontent.com/58131471/105956158-5ca9a900-60b2-11eb-92d8-2aec24e65cd7.PNG)
+
 
 
 We used the following plugin/s and widget/s for our application:
