@@ -1,5 +1,9 @@
 # Animated_Login
 
+A finals Flutter project passed to: Prof. John Rey Alipe
+
+for Course # and Subj: CC206 - Applications Development and Emerging Technologies
+
 Abesamis B. , Diosaban T. , and Magallanes A. of BSCS-3A
 
 Please turn on your sound to hear the sound effects. 
