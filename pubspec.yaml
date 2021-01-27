@@ -34,6 +34,8 @@ flutter:
  - assets/AD.wav
  - assets/KB2.wav
  - assets/KB1.wav
+ - assets/background.png
+
 
  
 uses-material-design: true
