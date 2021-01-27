@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: Container( //Background
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/background.png"),
@@ -153,7 +153,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
 
           }
           return Container(
-            margin: const EdgeInsets.only(top: 0, bottom: 90, right: 20, left: 20),
+            margin: const EdgeInsets.only(top: 0, bottom: 90, right: 20, left: 20), // Resizes the buttons and textfields and places a margin around them
             child: Form(
             key: _key,
             child: SingleChildScrollView(
@@ -168,7 +168,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     height: 10,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: InputDecoration( //Puts Border around textfield and hightlights once you click it
                       labelText: 'Email address',
                       filled: true,
                       isDense: true,
@@ -196,7 +196,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     height: 10,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: InputDecoration(//Puts Border around textfield and hightlights once you click it
                       labelText: 'Password',
                       filled: true,
                       isDense: true,
