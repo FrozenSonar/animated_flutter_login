@@ -1,5 +1,6 @@
 # Animated_Login
 
+
 A finals Flutter project passed to: Prof. John Rey Alipe
 
 for Course # and Subj: CC206 - Applications Development and Emerging Technologies
@@ -24,5 +25,5 @@ We used the following plugin/s and widget/s for our application:
 There is no database needed for this application instead we hardcoded the login credentials. 
 
 Email: cictapps@wvsu.edu.ph
-
 Password: 1234
+
