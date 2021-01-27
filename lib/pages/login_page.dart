@@ -154,6 +154,7 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
           }
           return Container(
             margin: const EdgeInsets.only(top: 0, bottom: 90, right: 20, left: 20),
+            child: Form(
             key: _key,
             child: SingleChildScrollView(
               child: Column(
@@ -232,8 +233,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                 ],
               ),
             ),
+            ),
           );
         },
+
       ),
     );
   }
