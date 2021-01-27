@@ -9,11 +9,15 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: SafeArea(
-          minimum: const EdgeInsets.all(16),
+      backgroundColor: Colors.white,
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/background.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+
           child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (context, state) {
               final authBloc = BlocProvider.of<AuthenticationBloc>(context);
@@ -23,19 +27,20 @@ class LoginPage extends StatelessWidget {
               if (state is AuthenticationFailure) {
                 return Center(
                     child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(state.message),
-                    FlatButton(
-                      textColor: Theme.of(context).primaryColor,
-                      child: Text('Retry'),
-                      onPressed: () {
-                        authBloc.add(AppLoaded());
-                      },
-                    )
-                  ],
-                ));
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(state.message),
+
+                        FlatButton(
+                          textColor: Theme.of(context).primaryColor,
+                          child: Text('Retry'),
+                          onPressed: () {
+                            authBloc.add(AppLoaded());
+                          },
+                        )
+                      ],
+                    ));
               }
               // return splash screen
               return Center(
@@ -147,7 +152,8 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
             );
 
           }
-          return Form(
+          return Container(
+            margin: const EdgeInsets.only(top: 0, bottom: 90, right: 20, left: 20),
             key: _key,
             child: SingleChildScrollView(
               child: Column(
@@ -157,11 +163,22 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     'https://assets1.lottiefiles.com/private_files/lf30_UsJGRD.json',
                     controller: _controller,
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Email address',
                       filled: true,
                       isDense: true,
+                      fillColor: Color(0xffe7f7f7),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(29),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(29),
+                        borderSide: BorderSide(color: Colors.transparent, width: 2.0),
+                      ),
                     ),
 
                     controller: _emailController, //This connects to the animation as the controller
@@ -175,13 +192,21 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                     },
                   ),
                   SizedBox(
-                    height: 12,
+                    height: 10,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Password',
                       filled: true,
                       isDense: true,
+                      fillColor: Color(0xffe7f7f7),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(29),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(29),
+                        borderSide: BorderSide(color: Colors.transparent, width: 2.0),
+                      ),
                     ),
                     obscureText: true,
                     controller: _passwordController, //This connects to the animation as the controller
@@ -197,9 +222,10 @@ class __SignInFormState extends State<_SignInForm> with TickerProviderStateMixin
                   ),
                   RaisedButton(
                     color: Theme.of(context).primaryColor,
+                    focusColor: Colors.white,
                     textColor: Colors.white,
                     padding: const EdgeInsets.all(16),
-                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
+                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(29.0)),
                     child: Text('LOG IN'),
                     onPressed: state is LoginLoading ? () { } : _onLoginButtonPressed,
                   )
